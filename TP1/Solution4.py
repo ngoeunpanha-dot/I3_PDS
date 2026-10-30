@@ -31,3 +31,19 @@ def add_user_numbers():
         print(f"The sum is: {val1 + val2}")
     else:
         print("Friendly message: One or both of the inputs are not valid numbers!")
+
+        
+# Part B — a safe converter
+def safe_int(text):
+    """Turn text into an int; return None when it is not a number."""
+    text = text.strip()
+    if text.lstrip("-").isdigit():         # "42" or "-42"
+        return int(text)
+    try:
+        return int(float(text))            # "3.9" -> 3
+    except ValueError:
+        return None                        # "abc", "", "12a"
+
+
+for sample in ["42", " -8 ", "3.9", "abc", ""]:
+    print(repr(sample), "->", safe_int(sample))
